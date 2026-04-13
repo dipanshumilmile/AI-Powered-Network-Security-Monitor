@@ -6,18 +6,18 @@ import {
 } from "lucide-react"
 
 const NAV = [
-  { to:"/",          icon: LayoutDashboard, label:"Dashboard" },
-  { to:"/traffic",   icon: Activity,        label:"Live Traffic" },
-  { to:"/anomalies", icon: AlertTriangle,   label:"Anomalies" },
-  { to:"/predict",   icon: Cpu,             label:"Analyze Packet" },
-  { to:"/reports",   icon: BarChart2,       label:"Reports" },
+  { to: "/", icon: LayoutDashboard, label: "Dashboard" },
+  { to: "/traffic", icon: Activity, label: "Live Traffic" },
+  { to: "/anomalies", icon: AlertTriangle, label: "Anomalies" },
+  { to: "/predict", icon: Cpu, label: "Analyze Packet" },
+  { to: "/reports", icon: BarChart2, label: "Reports" },
 ]
 
 function Uptime({ sec }) {
   const h = Math.floor(sec / 3600)
   const m = Math.floor((sec % 3600) / 60)
   const s = sec % 60
-  return `${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`
+  return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`
 }
 
 export default function Sidebar() {
@@ -26,23 +26,23 @@ export default function Sidebar() {
 
   return (
     <aside className="w-[220px] flex-shrink-0 flex flex-col"
-      style={{ background:"var(--bg-sidebar)", borderRight:"1px solid var(--border-color)", minHeight:"100vh" }}
+      style={{ background: "var(--bg-sidebar)", borderRight: "1px solid var(--border-color)", minHeight: "100vh" }}
     >
       {/* Logo */}
-      <div className="px-5 py-5 flex items-center gap-3 border-b" style={{ borderColor:"var(--border-color)" }}>
-        <div className="relative w-9 h-9 flex items-center justify-center flex-shrink-0">
-          <span className="pulse-ring absolute inset-0 rounded-full border border-red-500/50" style={{ animationDelay:"0s" }} />
-          <span className="pulse-ring absolute inset-0 rounded-full border border-red-500/30" style={{ animationDelay:"0.6s" }} />
+      <div className="px-5 py-5 flex items-center gap-3 border-b" style={{ borderColor: "var(--border-color)" }}>
+        {/* <div className="relative w-9 h-9 flex items-center justify-center flex-shrink-0">
+          <span className="pulse-ring absolute inset-0 rounded-full border border-red-500/50" style={{ animationDelay: "0s" }} />
+          <span className="pulse-ring absolute inset-0 rounded-full border border-red-500/30" style={{ animationDelay: "0.6s" }} />
           <div className="relative w-5 h-5 rounded-full bg-red-500/20 border border-red-500/70 flex items-center justify-center">
             <div className="w-2 h-2 rounded-full bg-red-400 blink" />
           </div>
-        </div>
+        </div> */}
         <div>
-          <div className="text-[16px] leading-none text-white" style={{ fontFamily:"'Syne',sans-serif", fontWeight:800 }}>
-            IDS<span className="text-red-400">Monitor</span>
+          <div className="text-[16px] leading-none text-white" style={{ fontFamily: "'Syne',sans-serif", fontWeight: 800 }}>
+            Traffic<span className="text-red-400">Monitor System</span>
           </div>
           <div className="text-[9px] text-slate-600 tracking-widest uppercase mt-0.5">
-            Enterprise Security
+
           </div>
         </div>
       </div>
@@ -71,7 +71,7 @@ export default function Sidebar() {
       </nav>
 
       {/* Status panel */}
-      <div className="m-3 p-3 rounded-xl" style={{ background:"rgba(255,255,255,0.025)", border:"1px solid rgba(255,255,255,0.05)" }}>
+      <div className="m-3 p-3 rounded-xl" style={{ background: "rgba(255,255,255,0.025)", border: "1px solid rgba(255,255,255,0.05)" }}>
         <div className="flex items-center gap-2 mb-3">
           <div className={`w-1.5 h-1.5 rounded-full blink ${connected ? "bg-emerald-400" : "bg-red-400"}`} />
           {connected
@@ -81,9 +81,9 @@ export default function Sidebar() {
         </div>
         <div className="flex flex-col gap-1.5">
           {[
-            { label:"Uptime",   value: <Uptime sec={stats.uptime_seconds} /> },
-            { label:"Pkt/sec",  value: stats.packets_per_sec },
-            { label:"Flows",    value: stats.active_flows },
+            { label: "Uptime", value: <Uptime sec={stats.uptime_seconds} /> },
+            { label: "Pkt/sec", value: stats.packets_per_sec },
+            { label: "Flows", value: stats.active_flows },
           ].map(({ label, value }) => (
             <div key={label} className="flex justify-between text-[10px]">
               <span className="text-slate-600">{label}</span>
@@ -94,7 +94,7 @@ export default function Sidebar() {
       </div>
 
       {/* Footer */}
-      <div className="px-4 py-3 border-t text-[9px] text-slate-700 tracking-wider" style={{ borderColor:"var(--border-color)" }}>
+      <div className="px-4 py-3 border-t text-[9px] text-slate-700 tracking-wider" style={{ borderColor: "var(--border-color)" }}>
         IDS MONITOR v2.0 · NSL-KDD
       </div>
     </aside>
